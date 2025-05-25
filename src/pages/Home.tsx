@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, UserCheck, Calendar, Shield, Star, Clock, ArrowRight, Heart, Users, Award, Sparkles, Phone, Mail, MapPin, CheckCircle } from 'lucide-react';
@@ -23,20 +22,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-10 animate-fade-in">
-              {/* Enhanced Logo Display */}
+              {/* Simple Text Logo Display for Mobile */}
               <div className="flex items-center space-x-4 lg:hidden">
-                <div className="relative">
-                  <div className="w-16 h-16 bg-gradient-to-br from-womancare-pink to-purple-500 rounded-2xl flex items-center justify-center shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
-                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                      <Heart className="w-7 h-7 text-womancare-pink" />
-                    </div>
-                  </div>
-                  <div className="absolute -top-1 -right-1 w-6 h-6 bg-womancare-green rounded-full flex items-center justify-center">
-                    <span className="text-white text-xs font-bold">+</span>
-                  </div>
-                </div>
                 <div>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-womancare-pink to-purple-600 bg-clip-text text-transparent">
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-womancare-pink to-purple-600 bg-clip-text text-transparent">
                     WomanCare
                   </h3>
                   <p className="text-sm text-womancare-gray">Empowering Women's Health</p>

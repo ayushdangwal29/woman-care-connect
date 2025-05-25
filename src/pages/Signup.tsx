@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -9,6 +8,7 @@ import { Eye, EyeOff, User, Mail, Lock, Calendar } from 'lucide-react';
 import { toast } from 'sonner';
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -27,11 +27,22 @@ const Signup = () => {
     }
     console.log('Signup attempt:', formData);
     toast.success('Account created successfully! Welcome to WomanCare.');
+    
+    // Redirect to dashboard after successful signup
+    setTimeout(() => {
+      navigate('/dashboard');
+    }, 1000);
   };
 
   const handleSocialSignup = (provider: string) => {
     console.log(`Signup with ${provider}`);
     toast.info(`Signing up with ${provider}...`);
+    
+    // Simulate social signup success and redirect to dashboard
+    setTimeout(() => {
+      toast.success(`Successfully signed up with ${provider}!`);
+      navigate('/dashboard');
+    }, 2000);
   };
 
   return (
@@ -40,10 +51,7 @@ const Signup = () => {
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-womancare-blue to-blue-600 p-12 flex-col justify-between">
         <div>
           <Link to="/" className="flex items-center space-x-2 text-white">
-            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-              <span className="text-womancare-blue font-bold text-lg">W</span>
-            </div>
-            <span className="text-2xl font-bold">WomanCare</span>
+            <span className="text-3xl font-bold">WomanCare</span>
           </Link>
         </div>
         
@@ -101,10 +109,7 @@ const Signup = () => {
           {/* Mobile Logo */}
           <div className="lg:hidden text-center">
             <Link to="/" className="inline-flex items-center space-x-2">
-              <div className="w-10 h-10 bg-womancare-pink rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">W</span>
-              </div>
-              <span className="text-2xl font-bold text-womancare-dark">WomanCare</span>
+              <span className="text-3xl font-bold text-womancare-dark">WomanCare</span>
             </Link>
           </div>
 
@@ -272,7 +277,7 @@ const Signup = () => {
               className="h-12"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.017 0C8.396 0 8.025.044 8.025.044c0 .307.135.613.27.918.135.306.27.613.405.918-.27.135-.405.27-.54.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405z"/>
+                <path d="M12.017 0C8.396 0 8.025.044 8.025.044c0 .307.135.613.27.918.135.306.27.613.405.918-.27.135-.405.27-.54.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405-.135.135-.27.27-.405.405z"/>
               </svg>
             </Button>
           </div>

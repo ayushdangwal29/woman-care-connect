@@ -10,6 +10,7 @@ import Doctors from "./pages/Doctors";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/login" element={<Login />} />

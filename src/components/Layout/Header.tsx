@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Menu, X, User, Calendar, Home, Heart, Bell, Settings } from 'lucide-react';
+import { MessageCircle, Menu, X, User, Calendar, Home, Bell, Settings } from 'lucide-react';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,24 +14,11 @@ const Header = () => {
     <header className="bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 h-20 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex justify-between items-center h-full">
-          {/* Enhanced Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-womancare-pink to-purple-500 rounded-2xl flex items-center justify-center shadow-xl transform group-hover:rotate-3 transition-all duration-300">
-                <div className="w-8 h-8 bg-white rounded-xl flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-womancare-pink group-hover:animate-pulse" />
-                </div>
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-womancare-green rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-white text-xs font-bold">+</span>
-              </div>
-            </div>
-            <div className="hidden sm:block">
-              <span className="text-2xl font-bold bg-gradient-to-r from-womancare-pink to-purple-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
-                WomanCare
-              </span>
-              <p className="text-xs text-womancare-gray font-medium -mt-1">Empowering Health</p>
-            </div>
+          {/* Simple Text Logo */}
+          <Link to="/" className="flex items-center group">
+            <span className="text-3xl font-bold bg-gradient-to-r from-womancare-pink to-purple-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+              WomanCare
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -46,6 +33,17 @@ const Header = () => {
             >
               <Home className="w-4 h-4" />
               <span>Home</span>
+            </Link>
+            <Link 
+              to="/dashboard" 
+              className={`flex items-center space-x-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:bg-blue-50 ${
+                isActive('/dashboard') 
+                  ? 'text-womancare-blue bg-blue-50 shadow-md' 
+                  : 'text-gray-600 hover:text-womancare-blue'
+              }`}
+            >
+              <Calendar className="w-4 h-4" />
+              <span>Dashboard</span>
             </Link>
             <Link 
               to="/chat" 
@@ -73,7 +71,6 @@ const Header = () => {
 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* Notification Bell */}
             <Button variant="ghost" size="sm" className="relative p-2 hover:bg-gray-100 rounded-xl">
               <Bell className="w-5 h-5 text-gray-600" />
               <span className="absolute -top-1 -right-1 w-3 h-3 bg-womancare-pink rounded-full"></span>
@@ -122,6 +119,18 @@ const Header = () => {
               >
                 <Home className="w-5 h-5" />
                 <span className="font-medium">Home</span>
+              </Link>
+              <Link 
+                to="/dashboard" 
+                className={`flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 ${
+                  isActive('/dashboard') 
+                    ? 'bg-blue-50 text-womancare-blue shadow-md' 
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-womancare-blue'
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Calendar className="w-5 h-5" />
+                <span className="font-medium">Dashboard</span>
               </Link>
               <Link 
                 to="/chat" 
